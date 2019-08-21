@@ -1,0 +1,40 @@
+ let spliterVC = UISplitViewController()
+
+    //set to navigation is not needed if you don't want it
+        let masterNavigationViewController = UINavigationController(rootViewController: alertList)
+        let detailNavigationController =  UINavigationController(rootViewController: secondVC)
+
+        alertList.detailSelectionDelegate = secondVC
+
+        spliterVC.viewControllers = [masterNavigationViewController,detailNavigationController]
+        alertList.alertList = list
+
+        navigationController.present(spliterVC, animated: true, completion: nil)
+
+
+DetailViewController.Swift
+
+protocol DetailSelectionDelegate: class {
+    func detailSelected(_ alertNumber: String)
+}
+
+//in the class DetailViewController: DetailSelectionDelegate
+  
+    func detailSelected(_ alertNumber: String)
+    {
+        //listView/master when clicked this will fire and change UI here
+    }
+    
+    
+SomeMasterViewController.swift
+
+ weak var detailSelectionDelegate: DetailSelectionDelegate?
+    
+    
+    
+ //in the class some user interaction will execute this code
+ 
+ detailSelectionDelegate?.detailSelected(alertList?.alerts?[indexPath.row].alertId ?? "")
+ 
+ //message will be pass so detailViewController will use it
+    

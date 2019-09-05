@@ -1,0 +1,16 @@
+ 
+ 
+ example: 
+    override func prepareForReuse()
+    {
+        super.prepareForReuse()
+    
+        reinitializeBillandBankOverLapFieldsForReuse()
+    }
+    
+    private func reinitializeBillandBankOverLapFieldsForReuse()
+    {
+        connectionStatusDot.image = nil
+        accountBalance.isHidden = false
+        accountBalanceStatus.isHidden = false
+    }

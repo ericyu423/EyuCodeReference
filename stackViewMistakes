@@ -1,0 +1,6 @@
+
+
+*
+when adding subviews to stack in code, and view height/width is define in code,
+parents stack should have "fill" not "fill proportional"
+fill proportional.

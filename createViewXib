@@ -1,0 +1,51 @@
+example
+
+import UIKit
+import ExperianWorksFramework
+
+class DrawerItemView: UIView
+{
+    @IBOutlet var contentView: UIView!  <---baseview xib
+    @IBOutlet weak var keyLabel: UILabel! <---stuff added
+    @IBOutlet weak var valueLabel: UILabel!
+    
+    required public init?(coder aDecoder: NSCoder)
+    {
+        super.init(coder: aDecoder)
+        loadXIB()
+    }
+    
+    override public init(frame: CGRect)
+    {
+        super.init(frame: frame)
+        loadXIB()
+    }
+    
+    func loadXIB()
+    {
+        let bundle = Bundle(for: DrawerItemView.self) <--- might not be in current framework so we need this
+        bundle.loadNibNamed("DrawerItemView", owner: self, options: nil)
+    
+        //following are fix if the view depends on say, stackview
+    
+        addSubview(contentView)
+        contentView.frame = self.bounds
+        heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 1).isActive = true
+        widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 1).isActive = true
+        
+        initStyles()
+    }
+    
+    func initStyles()
+    {
+        contentView.backgroundColor = UIColor.experianWorksLightGray()
+        keyLabel.setup(font: EWFontController.sharedInstance.font(forTextStyle: EWTextStyleBodyBold), textColor: UIColor.experianWorksGreyishBrownTwo(), textAlignmet: .left)
+        valueLabel.setup(font: EWFontController.sharedInstance.font(forTextStyle: EWTextStyleBodyRegular), textColor: UIColor.experianWorksGreyishBrownTwo(), textAlignmet: .left)
+    }
+    
+    func setLabels(key: String, value: String)
+    {
+        keyLabel.text = key
+        valueLabel.text = value
+    }
+}

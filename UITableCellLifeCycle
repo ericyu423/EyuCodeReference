@@ -1,0 +1,47 @@
+     override func layoutSubviews()
+     {
+         super.layoutSubviews()
+         
+         //this function is call when 
+         //1. cell is loaded the first time
+         //2. layout changed .ex    myImage.hidden = true <--- false -> true will cause the layoutsubviews to be call again
+         //3. table scrolls in and out of the table (reload)
+
+     }
+    
+    override func draw(_ rect: CGRect) 
+    {
+        super.draw(rect)
+        
+        //this function is called when
+        //1. cell is loaded the first time after layoutsubviews
+        
+        
+    }
+    
+    
+    
+    example.
+    
+    isCaret check of label is trucated, when the cell is loaded , the bound isze isn't size to 
+    what the cell is define.
+    
+    after downcaret is hidden is called, layoutsubview is called again()
+    
+    the time the label frame have been properly adjusted to the intended size, now truncation check will work
+    
+    
+    override func layoutSubviews()
+    {
+        super.layoutSubviews()
+      
+        if isCaretNeedsToBeHidden()
+        {
+            downCaretImageView.isHidden = true
+        }
+        else
+        {
+            downCaretImageView.isHidden = false
+        }
+    }
+    

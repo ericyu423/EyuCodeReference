@@ -1,4 +1,7 @@
- let spliterVC = UISplitViewController()
+      let spliterVC = UISplitViewController()
+ 
+        spliterVC.preferredPrimaryColumnWidthFraction = 0.5;
+        spliterVC.maximumPrimaryColumnWidth = spliterVC.view.frame.width
 
     //set to navigation is not needed if you don't want it
         let masterNavigationViewController = UINavigationController(rootViewController: alertList)
@@ -12,11 +15,11 @@
         navigationController.present(spliterVC, animated: true, completion: nil)
 
 
-DetailViewController.Swift
+  DetailViewController.Swift
 
-protocol DetailSelectionDelegate: class {
-    func detailSelected(_ alertNumber: String)
-}
+  protocol DetailSelectionDelegate: class {
+      func detailSelected(_ alertNumber: String)
+  }
 
 //in the class DetailViewController: DetailSelectionDelegate
   
@@ -28,13 +31,13 @@ protocol DetailSelectionDelegate: class {
     
 SomeMasterViewController.swift
 
- weak var detailSelectionDelegate: DetailSelectionDelegate?
+  weak var detailSelectionDelegate: DetailSelectionDelegate?
     
     
     
  //in the class some user interaction will execute this code
  
- detailSelectionDelegate?.detailSelected(alertList?.alerts?[indexPath.row].alertId ?? "")
+   detailSelectionDelegate?.detailSelected(alertList?.alerts?[indexPath.row].alertId ?? "")
  
  //message will be pass so detailViewController will use it
     

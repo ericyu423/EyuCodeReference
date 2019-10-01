@@ -1,5 +1,9 @@
 example
 
+xib steps.
+in xib click "place holder" -> "file owner" give the name of the UIView file name
+without this outlets can't be connected
+
 import UIKit
 import ExperianWorksFramework
 
